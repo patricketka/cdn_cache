@@ -1,0 +1,6 @@
+#!/bin/ python
+import os
+
+os.system('scp -i  ./pageviews.csv sigma@p5-http-a.5700.network:./')
+os.system('')
+
