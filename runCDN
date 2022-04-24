@@ -1,1 +1,26 @@
-#!/usr/bin/env python
+#!/bin/bash
+
+while getopts p:o:n:u:i: flag
+do
+  case "${flag}" in
+    p) port=${OPTARG};;
+    o) origin=${OPTARG};;
+    n) name=${OPTARG};;
+    u) username=${OPTARG};;
+    i) keyfile=${OPTARG};;
+  esac
+done
+
+#echo "$port";
+#echo "$origin";
+#echo "$name";
+#echo "$username";
+#echo "$keyfile";
+
+ssh -i "$keyfile" "$username"@p5-http-a.5700.network "./httpserver -p $port -o $origin &" &
+ssh -i "$keyfile" "$username"@p5-http-b.5700.network "./httpserver -p $port -o $origin &" &
+ssh -i "$keyfile" "$username"@p5-http-c.5700.network "./httpserver -p $port -o $origin &" &
+ssh -i "$keyfile" "$username"@p5-http-d.5700.network "./httpserver -p $port -o $origin &" &
+ssh -i "$keyfile" "$username"@p5-http-e.5700.network "./httpserver -p $port -o $origin &" &
+ssh -i "$keyfile" "$username"@p5-http-f.5700.network "./httpserver -p $port -o $origin &" &
+ssh -i "$keyfile" "$username"@p5-http-g.5700.network "./httpserver -p $port -o $origin &" &

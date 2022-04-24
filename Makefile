@@ -1,4 +1,4 @@
-.DEFAULT_GOAL := httpserver
+.DEFAULT_GOAL := executable
 
-httpserver:
-	chmod +x httpserver
+executable:
+	chmod 777 httpserver
